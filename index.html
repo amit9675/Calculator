@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #keyboard{
+            display:grid;
+            grid-template-rows: repeat(4,60px);
+            grid-template-columns: repeat(4, 1fr);
+            gap:10px;
+            width:20%;
+            margin:auto;
+        
+        }
+        h1{
+            text-align:center;
+            font-size:35px;
+            color:teal;
+        }
+        #keyboard>div{
+            border:0px solid red;
+           border-radius: 15px;
+           display:flex;
+            justify-content:center;
+            align-items:center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        .black{
+            background-color: black;
+            color:white;
+           font-size: 30px;
+           
+        }
+        #display{
+            height:60px;
+            width:20%;
+            margin:auto;
+            border:0px solid green;
+            margin-bottom:20px;
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:blueviolet;
+            font-size: larger;
+            
+        }
+        .red{
+            background-color: red;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <h1>MASAI CALCULATOR</h1>
+    <div id="display"></div>
+    <div id="keyboard">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div class="black">+</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div class="black">-</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div class="black">*</div>
+        <div class="red">C</div>
+        <div>0</div>
+        <div class="black">=</div>
+        <div class="black">/</div>
+    </div>
+</body>
+</html>
+<script>
+    let out=document.querySelectorAll("#keyboard>div");
+    bag="";
+  out.forEach(function(el){
+    el.addEventListener("click",fun)
+  });
+    function fun(event){
+     
+ let desire=(event.target.innerText)
+ if(desire=="="){
+    console.log(eval(bag))
+    document.querySelector("#display").innerText=eval(bag)
+ }
+ else if(desire=="C"||desire=="c"){
+bag="";
+document.querySelector("#display").innerText=""
+ }
+ else{
+    bag+=desire;
+    document.querySelector("#display").innerText=bag
+ }
+
+    }
+    
+</script>
